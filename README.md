@@ -68,9 +68,13 @@ En nuestro proyecto cada nodo tiene las siguientes funcionalidades:
 4. *Print my predecessor and successor*: Imprime tanto el ID del nodo actual como su predecesor y sucesor.
 
 5. *Print IP, PORT and LEVEL*: Imprime tanto el ID, IP, PORT y LEVEL (nivel de profundidad) del nodo actual.
+
 6. *Print files on the network*: Imprime los archivos contenidos en el nodo.
+
 7. *Make web scrapping*: Dada una url y un nivel de profundidad, se descargan todos los ficheros correspondientes a la url en la carpeta *src/downloads/urls/*  con la profundidad especificada y se sube el html principal hacia la red.
+
 8. *Upload file*: Se sube un archivo determinado y replicado a varios nodos en la red.
+
 9. *Download file*: Se descarga el archivo especificado en la dirección src/downloads/files/.
 
 ## License 📄
