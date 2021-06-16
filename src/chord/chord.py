@@ -201,7 +201,7 @@ class Node:
                 recvPred = pickle.loads(pSocket.recv(BUFFER))
             except:
                 print('\nOffline node dedected!\nStabilizing...')
-                # search for the next succ from the F table
+                # search for the next succ from the finger table
                 newSuccFound = False
                 value = ()
                 for key, value in self.fingerTable.items():
