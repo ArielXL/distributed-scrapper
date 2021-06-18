@@ -17,20 +17,22 @@ log.setLevel('DEBUG')
 class Scrapper():
 
     @type_check
-    def getHTML(self, url:str) -> str:
+    def getHTML(self, url:str) -> bytes:
         wait = 0
         while True:
             try:
                 log.info(f'GET {url}', 'getHTML')
-                with requests.get(url) as response:
-                    html = response.text
+                # with requests.get(url) as response:
+                #     html = response.text
+                with urllib.request.urlopen(url) as response:
+                    html = response.read()
                 break
             except Exception:
                 log.error(f'An error ocurred when try to get {url}', 'getHTML')
 
                 if wait == 2:
                     log.error(f'Download failed: {url}', 'getHTML')
-                    return 'ERROR'
+                    return b'ERROR'
 
                 log.info(f'Trying again in {2 ** wait} seconds', 'getHTML')
                 time.sleep(2 ** wait)
@@ -63,7 +65,7 @@ class Scrapper():
 
         folderName = getFolderName(url)
         html = self.getHTML(url)
-        if html == 'ERROR':
+        if html == b'ERROR':
             log.error(f'Not possible to scrapping this url: "{url}"', 'startRequests')
             return ''
 
@@ -102,7 +104,7 @@ class Scrapper():
             countLevel += 1
             url = queueHTML.get()
             html = self.getHTML(url)
-            if html == 'ERROR':
+            if html == b'ERROR':
                 return ''
 
             baseURL = self.formURL(url)
