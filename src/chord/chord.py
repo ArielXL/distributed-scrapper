@@ -335,7 +335,7 @@ class Node:
         pSocket.connect(self.pred)
         pSocket.sendall(pickle.dumps([4, 1, self.succ]))
         pSocket.close()
-        print(f'I had files: {self.filenameList}')
+        print(f'I had files: {self.filenameList}') if len(self.filenameList) > 0 else print('I had files: { }')
         # and also replicating its files to succ as a client
         print('Replicating files to other nodes before leaving')
         for filename in self.filenameList:
