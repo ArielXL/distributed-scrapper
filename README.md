@@ -4,8 +4,8 @@
 
 **Nombre(s) y Apellidos** | **Grupo** | **Correo**| **GitHub**
 :-:|:-:|:-:|:-:
-Reinaldo Barrera Travieso | C-411 | r.barrera@estudiantes.matcom.uh.cu| [@ArielXL](https://github.com/ArielXL)
-Ariel Plasencia Díaz | C-412 | a.plasencia@estudiantes.matcom.uh.cu| [@Reinaldo14](https://github.com/Reinaldo14)
+Reinaldo Barrera Travieso | C-411 | r.barrera@estudiantes.matcom.uh.cu| [@Reinaldo14](https://github.com/Reinaldo14) 
+Ariel Plasencia Díaz | C-412 | a.plasencia@estudiantes.matcom.uh.cu| [@ArielXL](https://github.com/ArielXL) 
 
 ## Empezando 🔧
 
