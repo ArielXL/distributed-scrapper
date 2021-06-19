@@ -234,7 +234,10 @@ class Node:
         if userChoice == '1':
             ip = input('Enter IP to connect: ')
             port = input('Enter port to connect: ')
-            self.sendJoinRequest(ip, int(port))
+            try:
+                self.sendJoinRequest(ip, int(port))
+            except:
+                pass
         elif userChoice == '2':
             self.leaveNetwork()
         elif userChoice == '3':
