@@ -338,18 +338,21 @@ class Node:
         print(f'I had files: {self.filenameList}') if len(self.filenameList) > 0 else print('I had files: { }')
         # and also replicating its files to succ as a client
         print('Replicating files to other nodes before leaving')
-        for filename in self.filenameList:
-            pSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            pSocket.connect(self.succ)
-            sDataList = [ 1, 1, filename ]
-            pSocket.sendall(pickle.dumps(sDataList))
-            with open(filename, 'rb') as file:
-                # getting back confirmation
-                pSocket.recv(BUFFER)
-                self.sendFile(pSocket, filename)
+        try:
+            for filename in self.filenameList:
+                pSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                pSocket.connect(self.succ)
+                sDataList = [ 1, 1, filename ]
+                pSocket.sendall(pickle.dumps(sDataList))
+                with open(filename, 'rb') as file:
+                    # getting back confirmation
+                    pSocket.recv(BUFFER)
+                    self.sendFile(pSocket, filename)
+                    pSocket.close()
+                    print('File replicate')
                 pSocket.close()
-                print('File replicate')
-            pSocket.close()
+        except:
+            print('Not possible replicate files')
         
         self.updateOtherFingerTables()
         self.pred = (self.ip, self.port)
