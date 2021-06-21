@@ -23,9 +23,8 @@ install: ## Install the project dependencies
 	pip install beautifulsoup4
 
 clean: ## Remove temporary files
+	rm -rf downloads/*
 	rm -rf __pycache__/
-	rm -rf downloads/urls/*
-	rm -rf downloads/files/*
 	rm -rf chord/__pycache__/
 	rm -rf utils/__pycache__/
 	rm -rf scrapper/__pycache__/
