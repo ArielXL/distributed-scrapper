@@ -1,3 +1,4 @@
+import os
 import re
 import urllib
 import hashlib
@@ -5,6 +6,7 @@ import hashlib
 from utils.colors import *
 from utils.type_check import *
 from urllib.parse import urlparse
+from locale import getdefaultlocale
 
 IP_SERVER = IP_CLIENT = '127.0.0.1'
 PORT_SERVER, PORT_CLIENT = 8080, 9090
@@ -118,3 +120,13 @@ def getDomain(url:str) -> str:
     _, netloc, _, _, _ = urllib.parse.urlsplit(url)
     domainURL = netloc.split('.')[-2]
     return domainURL
+
+@type_check
+def getPathDownload() -> str:
+    currentPath = os.getcwd()
+    splitCurrentPath = currentPath.split('/')
+    pathDownload = f'/home/{splitCurrentPath[2]}'
+    language = getdefaultlocale()[0]
+    download = 'Descargas' if language.startswith('es') else 'Downloads'
+    pathDownload = os.path.join(pathDownload, download)
+    return pathDownload
