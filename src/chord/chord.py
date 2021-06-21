@@ -469,7 +469,7 @@ class Node:
         Receiving file in parts if file already in directory.
         '''
         name = filename.split('/')[-1]
-        filename = f'downloads/files/{name}'
+        filename = f'downloads/{name}'
         fileAlready = flag
         try:
             with open(filename, 'rb') as file:

@@ -64,6 +64,7 @@ class Scrapper():
     def startRequests(self, url:str, level:int) -> str:
 
         folderName = getFolderName(url)
+        pathDownload = getPathDownload()
         html = self.getHTML(url)
         if html == b'ERROR':
             log.error(f'Not possible to scrapping this url: "{url}"', 'startRequests')
@@ -84,7 +85,7 @@ class Scrapper():
                     name = self.putName(soupTag[idx]['src'])
                     soupTag[idx]['src'] = name
 
-            direction = os.path.join('downloads', 'urls', folderName)
+            direction = os.path.join(pathDownload, 'downloads', folderName)
             page = f'{getPageName(url)}.html'
             if not os.path.isdir(direction):
                 os.makedirs(direction)
@@ -135,13 +136,13 @@ class Scrapper():
                         queueHTML.put(link)
 
                     try:                    
-                        with open(os.path.join('downloads', 'urls', folderName, name_url), 'wb') as fileHTML:
+                        with open(os.path.join(pathDownload, 'downloads', folderName, name_url), 'wb') as fileHTML:
                             listURL.append(link)
                             fileHTML.write(html)
                     except:
                         pass
 
-        pathURL = os.path.join('downloads', 'urls', folderName, page)
+        pathURL = os.path.join(pathDownload, 'downloads', folderName, page)
         return pathURL
 
     @type_check
